@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+NAME=$1
+PASSWORD='yourdefaultpassword'
+#PASSWORD='vbnfghj123#'
+if [ $2 ]; then
+PASSWORD=$2
+fi
+
+echo "drop database "$NAME"_db;"
+
+echo "create database "$NAME"_db;"
+echo "create user '"$NAME"_user'@'localhost' identified by '$PASSWORD';"
+echo "GRANT ALL ON "$NAME"_db.* to '"$NAME"_user'@'localhost' IDENTIFIED BY '$PASSWORD';"
+echo "ALTER DATABASE "$NAME"_db collate utf8_general_ci;"
